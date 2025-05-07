@@ -23,13 +23,12 @@ const data = [
 const DashboardHome: React.FC = () => {
   const [user, setUser] = useState<string | null>(null);
 
-  // Fetch username from localStorage on component mount
   useEffect(() => {
-    const loggedUser = localStorage.getItem("user"); // Get username from localStorage
+    const loggedUser = localStorage.getItem("user");
     if (loggedUser) {
       setUser(loggedUser);
     }
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
   return (
     <Container fluid className="py-4">

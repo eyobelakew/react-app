@@ -6,18 +6,17 @@ const Navbar: React.FC = () => {
   const [user, setUser] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // Fetch username from localStorage on component mount
   useEffect(() => {
-    const loggedUser = localStorage.getItem("user"); // Get username from localStorage
+    const loggedUser = localStorage.getItem("user");
     if (loggedUser) {
       setUser(loggedUser);
     }
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     navigate("/login");
-    window.location.reload(); // force re-render of App component (if needed)
+    window.location.reload();
   };
 
   return (
