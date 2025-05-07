@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
+  const [user, setUser] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  // Fetch username from localStorage on component mount
+  useEffect(() => {
+    const loggedUser = localStorage.getItem("user"); // Get username from localStorage
+    if (loggedUser) {
+      setUser(loggedUser);
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -28,7 +37,8 @@ const Navbar: React.FC = () => {
             width={32}
             height={32}
           />
-          <span>Eyob</span>
+          <span>{user ? user : "Guest"}</span>{" "}
+          {/* Display username or 'Guest' */}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>

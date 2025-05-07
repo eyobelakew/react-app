@@ -43,6 +43,20 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           />
           <h3 className="mt-2">Login</h3>
         </div>
+        {message && (
+          <div
+            className="alert alert-danger alert-dismissible fade show mt-3"
+            role="alert"
+          >
+            {message}
+            <button
+              type="button"
+              className="btn-close"
+              aria-label="Close"
+              onClick={() => setMessage("")}
+            ></button>
+          </div>
+        )}
         <form onSubmit={handleLogin}>
           <input
             className="form-control mb-3"
@@ -62,7 +76,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             Login
           </button>
         </form>
-        {message && <p className="mt-3 text-danger text-center">{message}</p>}
       </div>
     </div>
   );
