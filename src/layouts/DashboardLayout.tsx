@@ -12,7 +12,7 @@ import NotificationsPage from "../pages/NotificationsPage";
 const DashboardLayout: React.FC = () => (
   <div className="d-flex">
     <Sidebar />
-    <div className="flex-grow-1">
+    <div className="flex-grow-1" style={{ marginLeft: "250px" }}>
       <Navbar />
       <Routes>
         <Route path="/" element={<DashboardHome />} />
