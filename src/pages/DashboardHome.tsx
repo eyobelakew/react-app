@@ -31,12 +31,6 @@ const recentActivities = [
   { id: 4, action: "System update", time: "3 hours ago", details: "System updated to version 2.1.0" },
 ];
 
-const quickActions = [
-  { icon: <FaUsers />, title: "Add User", color: "primary", description: "Create a new user account" },
-  { icon: <FaDollarSign />, title: "New Sale", color: "success", description: "Record a new sale transaction" },
-  { icon: <FaTasks />, title: "Create Task", color: "warning", description: "Create a new task or project" },
-  { icon: <FaChartLine />, title: "View Reports", color: "info", description: "Access detailed reports and analytics" },
-];
 
 const DashboardHome: React.FC = () => {
   const [user, setUser] = useState<string | null>(null);
@@ -80,39 +74,6 @@ const DashboardHome: React.FC = () => {
 
   return (
     <Container fluid className="py-4">
-      {/* Quick Actions */}
-      <Row className="mb-4">
-        <Col>
-          <Card className="shadow-sm">
-            <Card.Body>
-              <Card.Title>Quick Actions</Card.Title>
-              <Row className="g-3">
-                {quickActions.map((action, index) => (
-                  <Col key={index} xs={6} sm={3}>
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={
-                        <Tooltip id={`tooltip-${index}`}>
-                          {action.description}
-                        </Tooltip>
-                      }
-                    >
-                      <Button
-                        variant={action.color}
-                        className="w-100 d-flex flex-column align-items-center py-3"
-                        onClick={() => handleQuickAction(action.title)}
-                      >
-                        <span className="mb-2">{action.icon}</span>
-                        {action.title}
-                      </Button>
-                    </OverlayTrigger>
-                  </Col>
-                ))}
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
 
       {/* Stats Cards */}
       <Row className="g-4 mb-4">
